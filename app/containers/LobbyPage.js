@@ -1,11 +1,11 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Lobby from '../components/Lobby';
+import Lobby from '../components/Lobby/Lobby';
 import * as LobbyActions from '../actions/lobby';
 
 function mapStateToProps(state) {
   return {
-    countdown: state.countdown
+    countdown: state.game.countdown
   };
 }
 

@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import Title from '../components/Title';
+import Title from '../components/Title/Title';
 
 type Props = {};
 

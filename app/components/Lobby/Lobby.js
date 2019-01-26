@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Lobby.css';
-import routes from '../constants/routes';
+import routes from '../../constants/routes';
 
 type Props = {
   startCountdown: () => void,
@@ -13,10 +13,7 @@ export default class Lobby extends Component<Props> {
   props: Props;
 
   render() {
-    const {
-      startCountdown,
-      countdown
-    } = this.props;
+    const { startCountdown, countdown } = this.props;
     return (
       <div>
         <div className={styles.backButton} data-tid="backButton">
@@ -25,7 +22,7 @@ export default class Lobby extends Component<Props> {
           </Link>
         </div>
         <div className={`countdown ${styles.countdown}`} data-tid="countdown">
-          {countdown}
+          {countdown > 0 ? countdown : ''}
         </div>
         <div className={styles.btnGroup}>
           <button
@@ -34,7 +31,7 @@ export default class Lobby extends Component<Props> {
             data-tclass="btn"
             type="button"
           >
-            <i className="fa fa-play-circle" />
+            <i className="fa fa-play" />
           </button>
         </div>
       </div>

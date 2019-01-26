@@ -1,9 +1,8 @@
 // @flow
-import type { GetState, Dispatch } from '../reducers/types';
+import type { Dispatch } from '../reducers/types';
 
 export const UPDATE_COUNTDOWN = 'UPDATE_COUNTDOWN';
 export const START_GAME = 'START_GAME';
-
 
 export function updateCountdown(count: int) {
   return {
@@ -18,8 +17,18 @@ export function startGame() {
   };
 }
 
-export function startCountdown(delay: int = 5000) {
-  return (dispatch: Dispatch, getState: GetState) => {
-    dispatch(startGame());
+export function startCountdown(delay: int = 1000) {
+  return (dispatch: Dispatch) => {
+    let timer = 3;
+    dispatch(updateCountdown(timer));
+    const countdown = setInterval(() => {
+      timer -= 1;
+      if (timer > 0) {
+        dispatch(updateCountdown(timer));
+      } else {
+        clearInterval(countdown);
+        dispatch(startGame());
+      }
+    }, delay);
   };
 }
