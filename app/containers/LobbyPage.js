@@ -1,19 +1,19 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Counter from '../components/Counter';
-import * as CounterActions from '../actions/counter';
+import Lobby from '../components/Lobby/Lobby';
+import * as LobbyActions from '../actions/lobby';
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    countdown: state.game.countdown
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch);
+  return bindActionCreators(LobbyActions, dispatch);
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Counter);
+)(Lobby);

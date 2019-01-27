@@ -1,4 +1,5 @@
 {
-  "HOME": "/",
-  "COUNTER": "/counter"
+  "TITLE": "/",
+  "LOBBY": "/lobby",
+  "DISPLAY": "/display"
 }
