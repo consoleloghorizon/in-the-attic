@@ -26,13 +26,13 @@ export default class Lobby extends Component<Props> {
     const { players } = this.props;
     const playersDisplay = _.map(players, (player) => {
       return (
-        <div>
+        <div  key={'players_' + player.username}>
           {player.username}{player.isVIP && '*'}
         </div>
       );
     });
     return (
-      <div className={styles.players} data-tid="players" key={'players_' + player.username}>
+      <div className={styles.players} data-tid="players">
         {playersDisplay}
       </div>
     );
