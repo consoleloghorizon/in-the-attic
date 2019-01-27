@@ -6,20 +6,24 @@ import routes from '../../constants/routes';
 
 type Props = {
   startCountdown: () => void,
-  countdown: number
+  countdown: number,
+  gameCode: string
 };
 
 export default class Lobby extends Component<Props> {
   props: Props;
 
   render() {
-    const { startCountdown, countdown } = this.props;
+    const { startCountdown, gameCode, countdown } = this.props;
     return (
       <div>
         <div className={styles.backButton} data-tid="backButton">
           <Link to={routes.TITLE}>
             <i className="fa fa-arrow-left fa-3x" />
           </Link>
+        </div>
+        <div className={styles.gameCode} data-tid="gameCode">
+          {gameCode}
         </div>
         <div className={`countdown ${styles.countdown}`} data-tid="countdown">
           {countdown > 0 ? countdown : ''}

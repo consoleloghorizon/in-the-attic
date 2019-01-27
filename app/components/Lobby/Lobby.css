@@ -2,6 +2,13 @@
   position: absolute;
 }
 
+.gameCode {
+  position: absolute;
+  top: 15%;
+  left: 45%;
+  font-size: 5rem;
+}
+
 .countdown {
   position: absolute;
   top: 30%;

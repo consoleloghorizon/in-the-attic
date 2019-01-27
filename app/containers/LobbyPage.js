@@ -5,7 +5,8 @@ import * as LobbyActions from '../actions/lobby';
 
 function mapStateToProps(state) {
   return {
-    countdown: state.game.countdown
+    countdown: state.game.countdown,
+    gameCode: state.game.gameCode
   };
 }
 
