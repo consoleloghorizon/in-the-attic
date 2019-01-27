@@ -17,7 +17,7 @@ export function startGame() {
   };
 }
 
-export function startCountdown(delay: int = 1000) {
+export function startCountdown() {
   return (dispatch: Dispatch) => {
     let timer = 3;
     dispatch(updateCountdown(timer));
@@ -29,6 +29,6 @@ export function startCountdown(delay: int = 1000) {
         clearInterval(countdown);
         dispatch(startGame());
       }
-    }, delay);
+    }, 1000);
   };
 }
