@@ -7,16 +7,16 @@ const initState = {
   countdown: 0,
   round: '',
   phase: '',
-  gameId: '',
+  gameCode: '',
   players: []
-}
+};
 
 export default function game(state: object = initState, action: Action) {
   switch (action.type) {
     case INIT_GAME_SUCCESS:
       return {
         ...state,
-        gameId: action.res
+        gameCode: action.res.gameCode
       };
     case UPDATE_COUNTDOWN:
       return {

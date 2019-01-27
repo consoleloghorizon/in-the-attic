@@ -23,12 +23,12 @@ export function initGame() {
       headers: {
         'Content-Type': 'application/json'
       },
-      url: '3.92.201.176:8000'
+      url: 'http://localhost:3000/start'
     };
     dispatch(initGameRequest());
     return axios(options)
       .then(res => {
-        const { result } = res.data;
+        const result = res.data;
         dispatch(initGameSuccess(result, defaultSuccess));
         return result;
       })
