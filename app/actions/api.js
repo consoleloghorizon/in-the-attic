@@ -1,6 +1,7 @@
 // import _ from 'lodash';
 import axios from 'axios';
 // import socket from 'socket.io';
+import { SERVER_URL } from '../constants/config';
 
 const defaultSuccess = {};
 
@@ -23,7 +24,7 @@ export function initGame() {
       headers: {
         'Content-Type': 'application/json'
       },
-      url: 'http://localhost:3000/start'
+      url: `${SERVER_URL}/start`
     };
     dispatch(initGameRequest());
     return axios(options)
