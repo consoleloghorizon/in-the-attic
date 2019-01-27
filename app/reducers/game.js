@@ -1,6 +1,6 @@
 // @flow
-import { UPDATE_COUNTDOWN, START_GAME } from '../actions/lobby';
-import { INIT_GAME_SUCCESS } from '../actions/api';
+import { UPDATE_COUNTDOWN, START_GAME, RESET_LOBBY } from '../actions/lobby';
+import { INIT_GAME_SUCCESS, PLAYER_JOINED } from '../actions/api';
 import type { Action } from './types';
 
 const initState = {
@@ -20,6 +20,13 @@ export default function game(state: object = initState, action: Action) {
         gameCode: action.res.gameCode,
         socket: action.res.socket
       };
+    case PLAYER_JOINED:
+      const players = state.players;
+      players.push(action.res.player);
+      return {
+        ...state,
+        players
+      }
     case UPDATE_COUNTDOWN:
       return {
         ...state,
@@ -31,6 +38,10 @@ export default function game(state: object = initState, action: Action) {
         countdown: 0,
         round: 0,
         phase: 1
+      };
+    case RESET_LOBBY:
+      return {
+        ...initState
       };
     default:
       return state;

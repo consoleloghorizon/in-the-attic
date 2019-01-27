@@ -4,6 +4,7 @@ import type { Dispatch } from '../reducers/types';
 
 export const UPDATE_COUNTDOWN = 'UPDATE_COUNTDOWN';
 export const START_GAME = 'START_GAME';
+export const RESET_LOBBY = 'RESET_LOBBY';
 
 export function updateCountdown(count: int) {
   return {
@@ -20,8 +21,14 @@ export function startGame() {
   };
 }
 
-export function startCountdown() {
-  return (dispatch: Dispatch) => {
+export function resetLobby() {
+  return {
+    type: RESET_LOBBY
+  };
+}
+
+export function startCountdown(dispatch: Dispatch) {
+  return dispatch => {
     let timer = 3;
     dispatch(updateCountdown(timer));
     const countdown = setInterval(() => {
@@ -34,4 +41,10 @@ export function startCountdown() {
       }
     }, 1000);
   };
+}
+
+export function reset() {
+  return (dispatch: Dispatch) => {
+    dispatch(resetLobby());
+  }
 }

@@ -2,7 +2,7 @@
 import axios from 'axios';
 import Socket from '../utils/socketManager';
 import { SERVER_URL } from '../constants/config';
-import { updateCountdown } from './lobby';
+import { startCountdown } from './lobby';
 
 const defaultSuccess = {};
 
@@ -38,7 +38,7 @@ export function initGame() {
       .then(res => {
         const result = {
           ...res.data,
-          socket: initSocket(res.data.gameCode)
+          socket: initSocket(res.data.gameCode, dispatch)
         };
         dispatch(initGameSuccess(result, defaultSuccess));
         return result;
@@ -49,9 +49,9 @@ export function initGame() {
   };
 }
 
-function initSocket(gamecode: string) {
+function initSocket(gamecode: string, dispatch: Dispatch) {
   const socket = new Socket(gamecode);
-  socket.joinGame(data => dispatch => dispatch(playerJoined(data)));
-  socket.gameIsStarting(() => dispatch => dispatch(updateCountdown(3)));
+  socket.joinGame(data => dispatch(playerJoined(data)));
+  socket.gameIsStarting(() => startCountdown(dispatch));
   return socket;
 }
