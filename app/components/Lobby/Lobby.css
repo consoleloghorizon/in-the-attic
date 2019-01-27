@@ -9,6 +9,12 @@
   font-size: 5rem;
 }
 
+.players {
+  position: absolute;
+  top: 15%;
+  font-size: 4rem;
+}
+
 .countdown {
   position: absolute;
   top: 30%;

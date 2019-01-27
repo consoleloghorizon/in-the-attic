@@ -14,17 +14,17 @@ export default class Socket {
   }
 
   gameIsStarting(callback) {
-    this.socket.on('start game', data => {
+    this.socket.on('game-status', data => {
       callback(data);
     });
   }
 
-  // subscribeToPhaseChange = (callback) => {
-  //     this.socket.on('phase over', data => {
-  //         console.log('phase game data', data);
-  //         callback(data);
-  //     });
-  // };
+  subscribeToPhaseChange = (callback) => {
+      this.socket.on('phase over', data => {
+          console.log('phase game data', data);
+          callback(data);
+      });
+  };
 
   sendGameOver = () => {
     this.socket.emit('phase over', 'finshed');
