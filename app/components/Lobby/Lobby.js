@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Lobby.css';
 import routes from '../../constants/routes';
+import { SERVER_URL } from '../../constants/config';
 
 type Props = {
   initGame: () => void,
@@ -54,15 +55,8 @@ export default class Lobby extends Component<Props> {
           {countdown > 0 ? countdown : ''}
         </div>
         {this.generatePlayersDisplay()}
-        <div className={styles.btnGroup}>
-          <button
-            className={styles.btn}
-            onClick={startCountdown}
-            data-tclass="btn"
-            type="button"
-          >
-            <i className="fa fa-play" />
-          </button>
+        <div className={`instructions ${styles.instructions}`} data-tid="instructions">
+          {`Go to ` + SERVER_URL + " to login!"}
         </div>
       </div>
     );
