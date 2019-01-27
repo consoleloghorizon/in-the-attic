@@ -1,0 +1,25 @@
+{
+  "intro": "This is the intro.",
+  "round": {
+    "1": {
+      "phase": {
+        "1": "Describe an item that you own that you would want to keep if you moved.",
+        "2": "Now, from the items you see, which item do you think everyone would want to keep?",
+        "3": "OK. So...what items would you want to toss?"
+      }
+    },
+    "2": {
+      "phase": {
+        "1": "Describe an item that you own that you would want to keep if you moved.",
+        "2": "Now, from the items you see, which item do you think everyone would want to keep?",
+        "3": "OK. So...what items would you want to toss?"
+      }
+    },
+    "3": {
+      "phase": {
+        "1": "It's time for the final round. We found some space! What items do you want to save?",
+        "2": "Finally...what items do you think you all will *actually* save?"
+      }
+    }
+  }
+}
