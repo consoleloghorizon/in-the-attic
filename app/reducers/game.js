@@ -1,4 +1,5 @@
 // @flow
+import _ from 'lodash';
 import { UPDATE_COUNTDOWN, START_GAME, RESET_LOBBY } from '../actions/lobby';
 import { INIT_GAME_SUCCESS, PLAYER_JOINED } from '../actions/api';
 import type { Action } from './types';
@@ -21,7 +22,7 @@ export default function game(state: object = initState, action: Action) {
         socket: action.res.socket
       };
     case PLAYER_JOINED:
-      const players = state.players;
+      const players = _.clone(state.players);
       players.push(action.res.player);
       return {
         ...state,

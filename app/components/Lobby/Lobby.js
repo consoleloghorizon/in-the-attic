@@ -26,15 +26,15 @@ export default class Lobby extends Component<Props> {
     const { players } = this.props;
     const playersDisplay = _.map(players, (player) => {
       return (
-        <div className={styles.players} data-tid="players" key={'players_' + player.username}>
+        <div>
           {player.username}{player.isVIP && '*'}
         </div>
       );
     });
     return (
-      <React.Fragment>
+      <div className={styles.players} data-tid="players" key={'players_' + player.username}>
         {playersDisplay}
-      </React.Fragment>
+      </div>
     );
   }
 

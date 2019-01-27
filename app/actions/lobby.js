@@ -27,7 +27,7 @@ export function resetLobby() {
   };
 }
 
-export function startCountdown(dispatch: Dispatch) {
+export function startCountdown() {
   return dispatch => {
     let timer = 3;
     dispatch(updateCountdown(timer));

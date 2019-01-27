@@ -52,6 +52,6 @@ export function initGame() {
 function initSocket(gamecode: string, dispatch: Dispatch) {
   const socket = new Socket(gamecode);
   socket.joinGame(data => dispatch(playerJoined(data)));
-  socket.gameIsStarting(() => startCountdown(dispatch));
+  socket.gameIsStarting(() => startCountdown());
   return socket;
 }
