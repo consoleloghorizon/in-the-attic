@@ -8,7 +8,8 @@ const initState = {
   round: '',
   phase: '',
   gameCode: '',
-  players: []
+  players: [],
+  socket: undefined
 };
 
 export default function game(state: object = initState, action: Action) {
@@ -16,7 +17,8 @@ export default function game(state: object = initState, action: Action) {
     case INIT_GAME_SUCCESS:
       return {
         ...state,
-        gameCode: action.res.gameCode
+        gameCode: action.res.gameCode,
+        socket: action.res.socket
       };
     case UPDATE_COUNTDOWN:
       return {

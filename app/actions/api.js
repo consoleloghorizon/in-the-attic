@@ -1,13 +1,16 @@
 // import _ from 'lodash';
 import axios from 'axios';
-// import socket from 'socket.io';
+import Socket from '../utils/socketManager';
 import { SERVER_URL } from '../constants/config';
+import { updateCountdown } from './lobby';
 
 const defaultSuccess = {};
 
 export const INIT_GAME_SUCCESS = 'INIT_GAME_SUCCESS';
 export const INIT_GAME_REQUEST = 'INIT_GAME_REQUEST';
 export const INIT_GAME_ERROR = 'INIT_GAME_ERROR';
+
+export const PLAYER_JOINED = 'PLAYER_JOINED';
 
 export const initGameSuccess = (res, success) => ({
   type: INIT_GAME_SUCCESS,
@@ -16,6 +19,10 @@ export const initGameSuccess = (res, success) => ({
 });
 export const initGameRequest = res => ({ type: INIT_GAME_REQUEST, res });
 export const initGameError = error => ({ type: INIT_GAME_ERROR, error });
+
+export function playerJoined(player) {
+  return { type: PLAYER_JOINED, res: player };
+}
 
 export function initGame() {
   return dispatch => {
@@ -29,7 +36,10 @@ export function initGame() {
     dispatch(initGameRequest());
     return axios(options)
       .then(res => {
-        const result = res.data;
+        const result = {
+          ...res.data,
+          socket: initSocket(res.data.gameCode)
+        };
         dispatch(initGameSuccess(result, defaultSuccess));
         return result;
       })
@@ -37,4 +47,11 @@ export function initGame() {
         dispatch(initGameError(error.message));
       });
   };
+}
+
+function initSocket(gamecode: string) {
+  const socket = new Socket(gamecode);
+  socket.joinGame(data => dispatch => dispatch(playerJoined(data)));
+  socket.gameIsStarting(() => dispatch => dispatch(updateCountdown(3)));
+  return socket;
 }

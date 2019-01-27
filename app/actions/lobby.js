@@ -1,4 +1,5 @@
 // @flow
+import { initGame } from './api';
 import type { Dispatch } from '../reducers/types';
 
 export const UPDATE_COUNTDOWN = 'UPDATE_COUNTDOWN';
@@ -10,6 +11,8 @@ export function updateCountdown(count: int) {
     res: count
   };
 }
+
+export { initGame };
 
 export function startGame() {
   return {

@@ -5,6 +5,7 @@ import styles from './Lobby.css';
 import routes from '../../constants/routes';
 
 type Props = {
+  initGame: () => void,
   startCountdown: () => void,
   countdown: number,
   gameCode: string
@@ -12,6 +13,11 @@ type Props = {
 
 export default class Lobby extends Component<Props> {
   props: Props;
+
+  componentDidMount() {
+    const { initGame } = this.props;
+    initGame();
+  }
 
   render() {
     const { startCountdown, gameCode, countdown } = this.props;

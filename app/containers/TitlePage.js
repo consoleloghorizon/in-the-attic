@@ -1,14 +1,13 @@
 // @flow
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import Title from '../components/Title/Title';
-import TitleActions from '../actions/title';
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(TitleActions, dispatch);
+type Props = {};
+
+export default class TitlePage extends Component<Props> {
+  props: Props;
+
+  render() {
+    return <Title />;
+  }
 }
-
-export default connect(
-  undefined,
-  mapDispatchToProps
-)(Title);
